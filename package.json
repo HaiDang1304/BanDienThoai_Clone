@@ -1,0 +1,25 @@
+{
+  "name": "bandienthoai_clone",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HaiDang1304/BanDienThoai_Clone.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HaiDang1304/BanDienThoai_Clone/issues"
+  },
+  "homepage": "https://github.com/HaiDang1304/BanDienThoai_Clone#readme",
+  "description": "",
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.16"
+  }
+}

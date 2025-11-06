@@ -6,12 +6,10 @@ class Controller {
     }
 
     public function view($view, $data = []) {
-        // ✅ Giải nén mảng $data thành các biến riêng
+    
         if (!empty($data) && is_array($data)) {
             extract($data);
         }
-
-        // ✅ Gọi file view
         require_once "../app/views/" . $view . ".php";
     }
 }

@@ -1,0 +1,131 @@
+<!-- app/views/partials/auth-modal.php -->
+<!-- ===== MODAL ĐĂNG NHẬP / ĐĂNG KÝ ===== -->
+<div id="authModal" class="hidden fixed inset-0 bg-black/40 backdrop-blur-sm z-[9999] items-center justify-center">
+    <div class="bg-white rounded-2xl shadow-xl w-full max-w-md p-6 relative">
+
+        <!-- Nút đóng -->
+        <button id="closeModal"
+            class="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-xl font-bold">✕</button>
+
+        <!-- Tabs -->
+        <div class="flex justify-center mb-5 border-b border-gray-200">
+            <button id="loginTab" class="flex-1 py-2 font-semibold text-yellow-600 border-b-2 border-yellow-500">Đăng
+                nhập</button>
+            <button id="registerTab" class="flex-1 py-2 font-semibold text-gray-500 hover:text-yellow-600">Đăng
+                ký</button>
+        </div>
+
+        <!-- Form Đăng nhập -->
+        <form id="loginForm" class="space-y-4">
+            <div>
+                <label class="block text-sm font-medium mb-1">Email</label>
+                <input type="email" placeholder="Nhập vào Email"
+                    class="w-full border rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-yellow-500" required>
+            </div>
+            <div>
+                <label class="block text-sm font-medium mb-1">Mật khẩu</label>
+                <input type="password" placeholder="••••••••"
+                    class="w-full border rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-yellow-500" required>
+            </div>
+
+            <button type="submit"
+                class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 rounded-lg transition">
+                Đăng nhập
+            </button>
+
+            <a href="/BanDienThoai_Clone/public/Auth/google"
+                class="flex items-center justify-center gap-2 w-full border py-2 rounded-lg hover:bg-gray-50 transition">
+                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" class="w-5 h-5">
+                <span>Đăng nhập bằng Google</span>
+            </a>
+
+
+
+
+            <p class="text-center text-sm text-gray-500">
+                Chưa có tài khoản?
+                <a href="#" id="switchToRegister" class="text-yellow-600 font-medium hover:underline">Đăng ký ngay</a>
+            </p>
+        </form>
+
+        <!-- Form Đăng ký -->
+        <form id="registerForm" class="space-y-4 hidden">
+            <div>
+                <label class="block text-sm font-medium mb-1">Họ và tên</label>
+                <input type="text" placeholder="Nguyễn Văn A"
+                    class="w-full border rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-yellow-500" required>
+            </div>
+            <div>
+                <label class="block text-sm font-medium mb-1">Email</label>
+                <input type="email" placeholder="Nhập vào Email"
+                    class="w-full border rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-yellow-500" required>
+            </div>
+            <div>
+                <label class="block text-sm font-medium mb-1">Mật khẩu</label>
+                <input type="password" placeholder="••••••••"
+                    class="w-full border rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-yellow-500" required>
+            </div>
+
+            <button type="submit"
+                class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 rounded-lg transition">
+                Đăng ký
+            </button>
+
+            <a href="/BanDienThoai_Clone/public/Auth/google"
+                class="flex items-center justify-center gap-2 w-full border py-2 rounded-lg hover:bg-gray-50 transition">
+                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" class="w-5 h-5">
+                <span>Đăng nhập bằng Google</span>
+            </a>
+
+
+
+
+            <p class="text-center text-sm text-gray-500">
+                Đã có tài khoản?
+                <a href="#" id="switchToLogin" class="text-yellow-600 font-medium hover:underline">Đăng nhập</a>
+            </p>
+        </form>
+    </div>
+</div>
+
+<script>
+    const modal = document.getElementById('authModal');
+    const closeModal = document.getElementById('closeModal');
+    const loginForm = document.getElementById('loginForm');
+    const registerForm = document.getElementById('registerForm');
+    const loginTab = document.getElementById('loginTab');
+    const registerTab = document.getElementById('registerTab');
+    const switchToRegister = document.getElementById('switchToRegister');
+    const switchToLogin = document.getElementById('switchToLogin');
+
+    // Mở modal
+    document.querySelectorAll('[data-open-auth]').forEach(btn => {
+        btn.addEventListener('click', e => {
+            e.preventDefault();
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        });
+    });
+
+    // Đóng modal
+    closeModal.addEventListener('click', () => modal.classList.add('hidden'));
+    modal.addEventListener('click', e => { if (e.target === modal) modal.classList.add('hidden'); });
+
+    // Chuyển tab
+    const showLogin = () => {
+        registerForm.classList.add('hidden');
+        loginForm.classList.remove('hidden');
+        loginTab.classList.add('text-yellow-600', 'border-b-2', 'border-yellow-500');
+        registerTab.classList.remove('text-yellow-600', 'border-yellow-500');
+    };
+    const showRegister = () => {
+        loginForm.classList.add('hidden');
+        registerForm.classList.remove('hidden');
+        registerTab.classList.add('text-yellow-600', 'border-b-2', 'border-yellow-500');
+        loginTab.classList.remove('text-yellow-600', 'border-yellow-500');
+    };
+    loginTab.addEventListener('click', showLogin);
+    registerTab.addEventListener('click', showRegister);
+    switchToLogin.addEventListener('click', showLogin);
+    switchToRegister.addEventListener('click', showRegister);
+</script>

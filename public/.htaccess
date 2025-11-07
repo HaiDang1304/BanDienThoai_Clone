@@ -4,3 +4,12 @@ RewriteBase /PHP/BanDienThoai_Clone/public/
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+# Kích hoạt rewrite
+RewriteEngine On
+
+# Nếu file hoặc thư mục thật có tồn tại thì truy cập trực tiếp
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Còn lại đưa toàn bộ về index.php và giữ nguyên tham số url
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]

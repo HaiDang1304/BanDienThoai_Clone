@@ -22,18 +22,25 @@
     </div>
 
     <!-- Actions -->
+    <?php
+    session_start();
+    ?>
     <div class="flex items-center space-x-3 text-sm font-medium">
-      <a href="#" class="flex items-center gap-1 hover:text-red-600 transition">
-        👤 <span class="hidden sm:inline">Đăng nhập</span>
-      </a>
-      <a href="#" class="flex items-center gap-1 hover:text-red-600 transition">
-        🛒 <span class="hidden sm:inline">Giỏ hàng</span>
-      </a>
-      <button
-        class="flex items-center gap-1 bg-yellow-100 border border-yellow-400 hover:bg-yellow-200 px-3 py-1.5 rounded-full text-xs sm:text-sm transition">
-        📍 Hồ Chí Minh <span class="ml-1">▾</span>
-      </button>
+      <?php if (!empty($_SESSION['auth'])): ?>
+        <div class="flex items-center gap-2">
+          <img src="<?= htmlspecialchars($_SESSION['auth']['avatar']) ?>" class="w-7 h-7 rounded-full" alt="">
+          <span>Xin chào, <?= htmlspecialchars($_SESSION['auth']['name']) ?></span>
+          <a href="/BanDienThoai_Clone/public/Auth/logout"
+            class="ml-2 px-3 py-1 rounded-full border hover:bg-gray-100">Đăng xuất</a>
+        </div>
+      <?php else: ?>
+        <a href="#" data-open-auth class="flex items-center gap-1 hover:text-red-600 transition">
+          👤 <span class="hidden sm:inline">Đăng nhập</span>
+        </a>
+      <?php endif; ?>
     </div>
+
+
   </div>
 
   <!-- Search (mobile) -->
@@ -62,3 +69,5 @@
     </ul>
   </nav>
 </header>
+
+<?php include __DIR__ . '/auth-modal.php'; ?>

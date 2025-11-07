@@ -10,7 +10,7 @@ if (!function_exists('vnd')) {
 
 $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://';
 $host = $_SERVER['HTTP_HOST'];
-$projectFolder = '/PHP/BanDienThoai_Clone';
+$projectFolder = '/BanDienThoai_Clone';
 $baseUrl = $protocol . $host . $projectFolder;
 
 function img_src(string $baseUrl, ?string $dbPath): string

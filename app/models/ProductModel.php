@@ -1,34 +1,42 @@
 <?php
-// app/models/ProductModel.php
+require_once __DIR__ . '/../config/database.php';
+
 class ProductModel
 {
-    public static function getRecommended(mysqli $conn, int $limit = 10): array
+    // Lấy danh sách gợi ý sản phẩm
+    public static function getRecommended(mysqli $db, int $limit = 12): array
     {
-        $sql = "SELECT id, name, variant, screen, size_inch, price, price_old,
-                        gift_value, rating, sold_k, installment, badge, image_url
-                 FROM products
-                 ORDER BY RAND()
-                 LIMIT ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("i", $limit);
+        $sql = "SELECT 
+                    id, name, variant, screen, size_inch,
+                    price, price_old, gift_value, rating,
+                    sold_k, installment, badge, image_url
+                FROM products
+                ORDER BY id DESC
+                LIMIT ?";
+        $stmt = $db->prepare($sql);
+        $stmt->bind_param('i', $limit);
         $stmt->execute();
-        $res = $stmt->get_result();
-        return $res ? $res->fetch_all(MYSQLI_ASSOC) : [];
+        $rows = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        $stmt->close();
+        return $rows;
     }
 
-    public static function getExclusive(mysqli $conn, int $limit = 12): array
+    // Lấy danh sách sản phẩm đặc quyền
+    public static function getExclusive(mysqli $db, int $limit = 12): array
     {
-        // Lọc theo badge 'ĐẶC QUYỀN' (hoặc bạn đổi điều kiện theo cột is_exclusive nếu có)
-        $sql = "SELECT id, name, variant, screen, size_inch, price, price_old,
-                        gift_value, rating, sold_k, installment, badge, image_url
-                 FROM products
-                 WHERE badge IS NOT NULL AND badge <> ''
-                 ORDER BY id DESC
-                 LIMIT ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("i", $limit);
+        $sql = "SELECT 
+                    id, name, variant, screen, size_inch,
+                    price, price_old, gift_value, rating,
+                    sold_k, installment, badge, image_url
+                FROM products
+                WHERE badge <> ''
+                ORDER BY id DESC
+                LIMIT ?";
+        $stmt = $db->prepare($sql);
+        $stmt->bind_param('i', $limit);
         $stmt->execute();
-        $res = $stmt->get_result();
-        return $res ? $res->fetch_all(MYSQLI_ASSOC) : [];
+        $rows = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        $stmt->close();
+        return $rows;
     }
 }

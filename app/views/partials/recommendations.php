@@ -16,7 +16,7 @@ if (!function_exists('vnd')) {
 
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mt-4">
         <?php foreach ($items as $p): ?>
-            <a href="/product.php?id=<?= (int) $p['id'] ?>"
+            <a href="/BanDienThoai_Clone/public/product.php?id=<?= (int) $p['id'] ?>"
                 class="relative group rounded-xl border border-gray-200 bg-white hover:shadow-lg transition p-3 flex flex-col">
                 <?php if (!empty($p['installment'])): ?>
                     <div class="absolute left-2 top-2 z-10 text-[11px] bg-orange-100 text-orange-700 px-2 py-0.5 rounded">
@@ -26,7 +26,7 @@ if (!function_exists('vnd')) {
 
                 <!-- ẢNH: cố định chiều cao để các card đều nhau -->
                 <?php
-                $baseUrl = '/PHP/BanDienThoai_Clone'; // đường dẫn gốc dự án trên localhost
+                $baseUrl = '/BanDienThoai_Clone'; // đường dẫn gốc dự án trên localhost
                 $imagePath = !empty($p['image_url']) ? $p['image_url'] : '/public/assets/images/placeholder-240.png';
                 $imageSrc = $baseUrl . $imagePath;
                 ?>

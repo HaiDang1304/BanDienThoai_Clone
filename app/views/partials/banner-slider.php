@@ -5,25 +5,25 @@
     <div class="swiper-wrapper">
         <!-- Slide 1 -->
         <div class="swiper-slide">
-            <img src="http://localhost/PHP/BanDienThoai_Clone/public/assets/images/banner_qc/banner1.png" alt="Banner 1"
+            <img src="http://localhost/BanDienThoai_Clone/public/assets/images/banner_qc/banner1.png" alt="Banner 1"
                 class="w-full h-[600px] md:h-[180px] object-cover">
         </div>
         <!-- Slide 2 -->
         <div class="swiper-slide">
-            <img src="http://localhost/PHP/BanDienThoai_Clone/public/assets/images/banner_qc/banner2.png" alt="Banner 2"
+            <img src="http://localhost/BanDienThoai_Clone/public/assets/images/banner_qc/banner2.png" alt="Banner 2"
                 class="w-full h-[600px] md:h-[180px] object-cover">
         </div>
         <!-- Slide 3 -->
         <div class="swiper-slide">
-            <img src="http://localhost/PHP/BanDienThoai_Clone/public/assets/images/banner_qc/banner3.png" alt="Banner 3"
+            <img src="http://localhost/BanDienThoai_Clone/public/assets/images/banner_qc/banner3.png" alt="Banner 3"
                 class="w-full h-[600px] md:h-[180px] object-cover">
         </div>
         <div class="swiper-slide">
-            <img src="http://localhost/PHP/BanDienThoai_Clone/public/assets/images/banner_qc/banner4.png" alt="Banner 4"
+            <img src="http://localhost/BanDienThoai_Clone/public/assets/images/banner_qc/banner4.png" alt="Banner 4"
                 class="w-full h-[600px] md:h-[180px] object-cover">
         </div>
         <div class="swiper-slide">
-            <img src="http://localhost/PHP/BanDienThoai_Clone/public/assets/images/banner_qc/banner5.png" alt="Banner 5"
+            <img src="http://localhost/BanDienThoai_Clone/public/assets/images/banner_qc/banner5.png" alt="Banner 5"
                 class="w-full h-[600px] md:h-[180px] object-cover">
         </div>
     </div>

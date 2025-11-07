@@ -1,7 +1,7 @@
 <?php
 $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://';
 $host = $_SERVER['HTTP_HOST'];
-$projectFolder = '/PHP/BanDienThoai_Clone';
+$projectFolder = '/BanDienThoai_Clone';
 $baseUrl = $protocol . $host . $projectFolder;
 
 $asset = function (string $relPath) use ($baseUrl): string {

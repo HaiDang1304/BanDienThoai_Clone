@@ -1,13 +1,13 @@
 <?php
+// Load class Controller cha trước
+require_once "../app/core/Controller.php";
+
 class App {
     protected $controller = "HomeController";
     protected $action = "index";
     protected $params = [];
 
     public function __construct() {
-        // ✅ Load controller cha trước
-        require_once "../app/core/Controller.php";
-
         $arr = $this->UrlProcess();
 
         // ✅ Lấy controller nếu tồn tại
@@ -32,7 +32,7 @@ class App {
         // ✅ Gán params
         $this->params = $arr ? array_values($arr) : [];
 
-        // ✅ Gọi hàm Controller::Action(params)
+        // ✅ Gọi Controller::Action(params)
         call_user_func_array([$this->controller, $this->action], $this->params);
     }
 
@@ -42,6 +42,4 @@ class App {
         }
         return [];
     }
-
-    
 }

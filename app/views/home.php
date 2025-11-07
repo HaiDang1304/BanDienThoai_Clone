@@ -1,6 +1,8 @@
 <?php
-include __DIR__ . "/../config/database.php";
+require_once __DIR__ . '/../config/database.php';
+$conn = db(); // LẤY mysqli từ singleton, không còn $conn global
 date_default_timezone_set('Asia/Ho_Chi_Minh');
+
 
 /* ---------------------------
    1) Lấy khung giờ + xác định trạng thái
@@ -96,7 +98,7 @@ function discountBadge($original, $sale, $discountStr)
 
 function displayProductCard($p, $slotStatus = 'active')
 {
-    $baseUrl = 'http://localhost/PHP/BanDienThoai_Clone/public/';
+    $baseUrl = 'http://localhost/BanDienThoai_Clone/public/';
     $badge = discountBadge($p['original_price'], $p['sale_price'], $p['discount'] ?? '');
 
     echo '<div class="group bg-white rounded-2xl shadow-sm border hover:shadow-lg transition-all duration-200 p-4 flex flex-col">';
@@ -265,12 +267,12 @@ $defaultSlotId = $firstActiveId ?? $firstUpcomingId ?? (array_key_first($slots) 
         <?php include __DIR__ . '/partials/banner-slider.php'; ?>
 
         <?php
-        $items = $data['recommended'] ?? [];
+        $items = $recommended ?? [];
         include __DIR__ . '/partials/recommendations.php';
         ?>
 
         <?php
-        $items = $data['exclusive'] ?? [];
+        $items = $exclusive ?? [];
         include __DIR__ . '/partials/exclusive.php';
         ?>
 

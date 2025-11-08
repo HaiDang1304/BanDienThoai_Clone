@@ -149,7 +149,10 @@ class AuthController extends Controller
         $email = strtolower(trim($_POST['email'] ?? ''));
         $pass = (string) ($_POST['password'] ?? '');
 
-        $stmt = $this->db->prepare("SELECT id,name,email,avatar,password_hash,email_verified,role FROM users WHERE email=? LIMIT 1");
+        $stmt = $this->db->prepare(
+            "SELECT id,name,email,avatar,password_hash,email_verified,role
+         FROM users WHERE email=? LIMIT 1"
+        );
         if (!$stmt) {
             echo json_encode(['status' => 'error', 'message' => 'Lỗi hệ thống.']);
             return;
@@ -169,16 +172,30 @@ class AuthController extends Controller
             return;
         }
 
+        // Lưu session
         $_SESSION['auth'] = [
             'id' => (int) $id,
             'name' => $name,
             'email' => $em,
-            'avatar' => $avatar,
+            'avatar' => $avatar ?: '/BanDienThoai_Clone/public/assets/images/avata_user/default.jpg',
             'role' => $role ?: 'user',
             'provider' => 'local'
         ];
-        echo json_encode(['status' => 'success', 'message' => 'Đăng nhập thành công!']);
+
+        // Quyết định URL đích theo role
+        $base = '/BanDienThoai_Clone/public';
+        $redirect = ($role === 'admin')
+            ? $base . '/admin/index.php'
+            : $base . '/index.php';
+
+        echo json_encode([
+            'status' => 'success',
+            'message' => 'Đăng nhập thành công!',
+            'role' => $role ?: 'user',
+            'redirect' => $redirect
+        ]);
     }
+
 
     /* -------------------- GOOGLE OAUTH (SẴN CÓ) -------------------- */
 

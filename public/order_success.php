@@ -26,7 +26,7 @@ $code = htmlspecialchars($_GET['code'] ?? '');
       <?php endif; ?>
       <p class="mt-2 text-gray-600 text-sm">Chúng tôi sẽ liên hệ xác nhận và giao hàng sớm nhất.</p>
       <a href="<?= url_to('index.php') ?>" class="mt-5 inline-block px-5 py-2 rounded-lg bg-red-600 text-white font-semibold hover:bg-red-700">
-        Về trang chủ
+        Về trang chủ 
       </a>
     </div>
   </main>

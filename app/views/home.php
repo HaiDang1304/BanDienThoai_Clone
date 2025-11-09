@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../config/database.php';
-$conn = db(); // LẤY mysqli từ singleton, không còn $conn global
+$conn = db(); 
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 
 
